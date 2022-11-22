@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const email = useRef();
+  const password = useRef();
+  useEffect(() => {
+    email.current.focus();
+  }, []);
   const navigate = useNavigate();
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     if (email == "user@gmail.com" && password == "abc1234") {
@@ -34,15 +31,13 @@ const Login = () => {
             <input
               placeholder="Email"
               type="text"
-              onChange={handleEmail}
-              value={email}
+              ref={email}
               className="mb-4 border-0 border-b-2 p-3 w-full"
             />
             <input
               placeholder="Password"
               type="password"
-              onChange={handlePassword}
-              value={password}
+              ref={password}
               className="mb-4 border-0 border-b-2 p-3 w-full"
             />
 
