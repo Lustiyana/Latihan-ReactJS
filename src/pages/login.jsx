@@ -1,26 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate();
   useEffect(() => {
     email.current.focus();
   }, []);
-  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (email == "user@gmail.com" && password == "abc1234") {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      email.current.value == "user@gmail.com" &&
+      password.current.value == "abc1234"
+    ) {
       const token = "123456789";
       localStorage.setItem("token", token);
 
       if (!localStorage.getItem("token")) {
         alert("Silahkan Login");
-        navigate("");
+        navigate("/login");
       }
       navigate("/Home");
     }
+    console.log("Berhasil di submit");
   };
   return (
     <>
