@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const handlerLogout = () => {
-    alert("Anda telah keluar");
+    alert("Want to Exit?");
     localStorage.removeItem("token");
     navigate("/login");
   };
