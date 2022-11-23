@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import CheckIfLogin from "./helper/CheckIfLogin";
+import Register from "./pages/register";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },

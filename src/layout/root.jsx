@@ -18,6 +18,9 @@ export default function Root() {
               <button className="bg-red-300 px-8 py-2 rounded-md hover:bg-red-400 text-white">
                 <Link to={`Login`}>Login</Link>
               </button>
+              <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
+                <Link to={`Register`}>Sign Up</Link>
+              </button>
             </div>
           </div>
         </div>
