@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Login from "./pages/login";
 import CheckIfLogin from "./helper/CheckIfLogin";
 import Register from "./pages/register";
+import Details from "./pages/detail";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "home/:id",
+        element: <Details />,
       },
     ],
   },

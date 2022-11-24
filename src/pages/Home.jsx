@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Home = () => {
   const [fetchData, setFetchData] = useState([]);
 
-  let api = `https://rickandmortyapi.com/api/character/?page=19`;
+  let api = `https://rickandmortyapi.com/api/character/`;
 
   useEffect(() => {
     (async function () {
@@ -22,11 +22,11 @@ const Home = () => {
   };
   return (
     <>
-      <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-12">
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-12">
         {fetchData.map((data) => {
           return (
-            <>
-              <div key={data.id} className="rounded border-2 ">
+            <div key={data.id} className="rounded border-2 ">
+              <Link to={`/home/${data.id}`}>
                 <img src={data.image} className="w-full" />
                 <div className="grid grid-rows-2 gap-1">
                   <div className="text-3xl font-bold text-center">
@@ -39,8 +39,8 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-            </>
+              </Link>
+            </div>
           );
         })}
       </div>
