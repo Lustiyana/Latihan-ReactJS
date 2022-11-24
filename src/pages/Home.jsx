@@ -22,25 +22,25 @@ const Home = () => {
   };
   return (
     <>
-      <div>
+      <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-12">
         {fetchData.map((data) => {
           return (
-            <div key={data.id}>
-              {fetchData.map((data) => {
-                return (
-                  <>
-                    <div className="card max-w-sm rounded overflow-hidden border-2">
-                      <div className="mb-10">
-                        <img src={data.image} className="w-full" />
-                        <div className="px-6 py-4">
-                          <h5>{data.name}</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
+            <>
+              <div key={data.id} className="rounded border-2 ">
+                <img src={data.image} className="w-full" />
+                <div className="grid grid-rows-2 gap-1">
+                  <div className="text-3xl font-bold text-center">
+                    {data.name}
+                  </div>
+                  <div className="location grid gap-1 ml-4 mb-2">
+                    <div className="text-gray-600">Location</div>
+                    <p className="text-lg font-semibold">
+                      {data.location.name}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
           );
         })}
       </div>
