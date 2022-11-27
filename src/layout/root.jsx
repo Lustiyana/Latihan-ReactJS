@@ -1,8 +1,50 @@
 import { Link, Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import useButtonLogin from "../../hooks/useButtonLogin";
 
-import React from "react";
+function Component(props) {
+  const status = props.status;
+  console.log(status);
 
+  if (status) {
+    return (
+      <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
+        <Link to={`Register`}>Log Out</Link>
+      </button>
+    );
+  } else {
+    return (
+      <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
+        <Link to={`Register`}>Sign Up</Link>
+      </button>
+    );
+  }
+}
 export default function Root() {
+  const [needLogin, handleButton] = useButtonLogin();
+  useEffect(() => {
+    handleButton(1);
+  });
+
+  // function IsLogin() {
+  //   const token = localStorage.getItem("token");
+  //   setNeedLogin(token);
+  //   console.log(needLogin);
+  //   if (needLogin == null) {
+  //     return (
+  //       <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
+  //         <Link to={`Register`}>Sign Up</Link>
+  //       </button>
+  //     );
+  //   } else {
+  //     return (
+  //       <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
+  //         <Link to={`Register`}>Login</Link>
+  //       </button>
+  //     );
+  //   }
+  // }
+
   return (
     <>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2 mt-2 w-3/4 mx-auto navbar">
@@ -15,12 +57,7 @@ export default function Root() {
               <Link to={`Home`}>Home</Link>
               <Link to={`Blogs`}>Blogs</Link>
               <Link to={`Contact`}>Contacts</Link>
-              <button className="bg-red-300 px-8 py-2 rounded-md hover:bg-red-400 text-white">
-                <Link to={`Login`}>Login</Link>
-              </button>
-              <button className="px-6 py-2 rounded-md hover:bg-red-400 hover:text-white border border-red-300">
-                <Link to={`Register`}>Sign Up</Link>
-              </button>
+              <Component status={needLogin} />
             </div>
           </div>
         </div>
