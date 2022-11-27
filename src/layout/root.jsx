@@ -1,8 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useButtonLogin from "../../hooks/useButtonLogin";
+import NavLink from "../component/NavLink";
 
-function Component(props) {
+const Component = (props) => {
   const status = props.status;
   console.log(status);
 
@@ -19,11 +20,11 @@ function Component(props) {
       </button>
     );
   }
-}
+};
 export default function Root() {
   const [needLogin, handleButton] = useButtonLogin();
   useEffect(() => {
-    handleButton(1);
+    handleButton();
   });
 
   // function IsLogin() {
@@ -54,9 +55,15 @@ export default function Root() {
               <Link to={`Home`}>My Artikel</Link>
             </div>
             <div className="hidden md:flex items-center space-x-6 nav-components">
-              <Link to={`Home`}>Home</Link>
-              <Link to={`Blogs`}>Blogs</Link>
-              <Link to={`Contact`}>Contacts</Link>
+              <Link to={`Home`}>
+                <NavLink name="Home" />
+              </Link>
+              <Link to={`Blogs`}>
+                <NavLink name="Blogs" />
+              </Link>
+              <Link to={`Contact`}>
+                <NavLink name="Contact" />
+              </Link>
               <Component status={needLogin} />
             </div>
           </div>

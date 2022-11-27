@@ -1,5 +1,6 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
+import { UserContext } from "./UserContext";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,6 +16,7 @@ import Login from "./pages/login";
 import CheckIfLogin from "./helper/CheckIfLogin";
 import Register from "./pages/register";
 import Details from "./pages/detail";
+import useButtonLogin from "../hooks/useButtonLogin";
 
 const router = createBrowserRouter([
   {

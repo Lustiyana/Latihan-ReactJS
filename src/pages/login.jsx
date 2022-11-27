@@ -9,6 +9,9 @@ const Login = () => {
     email.current.focus();
   }, []);
 
+  function refreshPage() {
+    window.location.reload(true);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -23,6 +26,7 @@ const Login = () => {
         navigate("/login");
       }
       navigate("/Home");
+      refreshPage();
     }
     console.log("Berhasil di submit");
   };

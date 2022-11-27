@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useButtonLogin from "../../hooks/useButtonLogin";
+import { UserContext } from "../UserContext";
+import Component from "../layout/root";
 
 const Home = () => {
   const [fetchData, setFetchData] = useState([]);
-
   let api = `https://rickandmortyapi.com/api/character/`;
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const Home = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
   return (
     <>
       <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-12">
